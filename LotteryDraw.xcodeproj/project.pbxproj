@@ -11,6 +11,7 @@
 		20D87AA42D620E1000900FF0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D87AA32D620E1000900FF0 /* ContentView.swift */; };
 		20D87AA62D620E1100900FF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D87AA52D620E1100900FF0 /* Assets.xcassets */; };
 		20D87AA92D620E1100900FF0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D87AA82D620E1100900FF0 /* Preview Assets.xcassets */; };
+		356063B34201A7A30A6434F8 /* Pods_LotteryDraw.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0CA76664EB4500AEDFF08B /* Pods_LotteryDraw.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,9 @@
 		20D87AA32D620E1000900FF0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		20D87AA52D620E1100900FF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20D87AA82D620E1100900FF0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3807059F9F6383452DD22125 /* Pods-LotteryDraw.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LotteryDraw.release.xcconfig"; path = "Target Support Files/Pods-LotteryDraw/Pods-LotteryDraw.release.xcconfig"; sourceTree = "<group>"; };
+		C74E7077541C731FB54BDD0F /* Pods-LotteryDraw.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LotteryDraw.debug.xcconfig"; path = "Target Support Files/Pods-LotteryDraw/Pods-LotteryDraw.debug.xcconfig"; sourceTree = "<group>"; };
+		DE0CA76664EB4500AEDFF08B /* Pods_LotteryDraw.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LotteryDraw.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				356063B34201A7A30A6434F8 /* Pods_LotteryDraw.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +42,8 @@
 			children = (
 				20D87AA02D620E1000900FF0 /* LotteryDraw */,
 				20D87A9F2D620E1000900FF0 /* Products */,
+				B83685F5E0CB93069047D5D1 /* Pods */,
+				9914008CB5222C082982ACEF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,24 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		9914008CB5222C082982ACEF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DE0CA76664EB4500AEDFF08B /* Pods_LotteryDraw.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B83685F5E0CB93069047D5D1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C74E7077541C731FB54BDD0F /* Pods-LotteryDraw.debug.xcconfig */,
+				3807059F9F6383452DD22125 /* Pods-LotteryDraw.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 20D87AAC2D620E1100900FF0 /* Build configuration list for PBXNativeTarget "LotteryDraw" */;
 			buildPhases = (
+				A495DAEDD85E618DD6DC88C1 /* [CP] Check Pods Manifest.lock */,
 				20D87A9A2D620E1000900FF0 /* Sources */,
 				20D87A9B2D620E1000900FF0 /* Frameworks */,
 				20D87A9C2D620E1000900FF0 /* Resources */,
+				B46E8683A7603466E6726738 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A495DAEDD85E618DD6DC88C1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LotteryDraw-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B46E8683A7603466E6726738 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LotteryDraw/Pods-LotteryDraw-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LotteryDraw/Pods-LotteryDraw-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LotteryDraw/Pods-LotteryDraw-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		20D87A9A2D620E1000900FF0 /* Sources */ = {
@@ -266,6 +335,7 @@
 		};
 		20D87AAD2D620E1100900FF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C74E7077541C731FB54BDD0F /* Pods-LotteryDraw.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -295,6 +365,7 @@
 		};
 		20D87AAE2D620E1100900FF0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3807059F9F6383452DD22125 /* Pods-LotteryDraw.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
