@@ -4,5 +4,5 @@ inhibit_all_warnings!
 target 'LotteryDraw' do
  
  use_frameworks!
- pod 'PanModal'
+# pod 'PanModal'
 end

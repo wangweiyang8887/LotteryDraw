@@ -8,18 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		20D87AA22D620E1000900FF0 /* LotteryDrawApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D87AA12D620E1000900FF0 /* LotteryDrawApp.swift */; };
-		20D87AA42D620E1000900FF0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D87AA32D620E1000900FF0 /* ContentView.swift */; };
 		20D87AA62D620E1100900FF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D87AA52D620E1100900FF0 /* Assets.xcassets */; };
 		20D87AA92D620E1100900FF0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D87AA82D620E1100900FF0 /* Preview Assets.xcassets */; };
+		20D87AB02D620F5800900FF0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D87AAF2D620F5800900FF0 /* ContentView.swift */; };
+		20D87AB22D620F6C00900FF0 /* LotteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D87AB12D620F6B00900FF0 /* LotteryView.swift */; };
+		20D87AB42D620F7400900FF0 /* MutilRandomNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D87AB32D620F7400900FF0 /* MutilRandomNumberView.swift */; };
 		356063B34201A7A30A6434F8 /* Pods_LotteryDraw.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0CA76664EB4500AEDFF08B /* Pods_LotteryDraw.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		20D87A9E2D620E1000900FF0 /* LotteryDraw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LotteryDraw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20D87AA12D620E1000900FF0 /* LotteryDrawApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryDrawApp.swift; sourceTree = "<group>"; };
-		20D87AA32D620E1000900FF0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		20D87AA52D620E1100900FF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20D87AA82D620E1100900FF0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		20D87AAF2D620F5800900FF0 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		20D87AB12D620F6B00900FF0 /* LotteryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryView.swift; sourceTree = "<group>"; };
+		20D87AB32D620F7400900FF0 /* MutilRandomNumberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutilRandomNumberView.swift; sourceTree = "<group>"; };
 		3807059F9F6383452DD22125 /* Pods-LotteryDraw.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LotteryDraw.release.xcconfig"; path = "Target Support Files/Pods-LotteryDraw/Pods-LotteryDraw.release.xcconfig"; sourceTree = "<group>"; };
 		C74E7077541C731FB54BDD0F /* Pods-LotteryDraw.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LotteryDraw.debug.xcconfig"; path = "Target Support Files/Pods-LotteryDraw/Pods-LotteryDraw.debug.xcconfig"; sourceTree = "<group>"; };
 		DE0CA76664EB4500AEDFF08B /* Pods_LotteryDraw.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LotteryDraw.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,7 +63,9 @@
 			isa = PBXGroup;
 			children = (
 				20D87AA12D620E1000900FF0 /* LotteryDrawApp.swift */,
-				20D87AA32D620E1000900FF0 /* ContentView.swift */,
+				20D87AAF2D620F5800900FF0 /* ContentView.swift */,
+				20D87AB12D620F6B00900FF0 /* LotteryView.swift */,
+				20D87AB32D620F7400900FF0 /* MutilRandomNumberView.swift */,
 				20D87AA52D620E1100900FF0 /* Assets.xcassets */,
 				20D87AA72D620E1100900FF0 /* Preview Content */,
 			);
@@ -88,7 +94,6 @@
 				C74E7077541C731FB54BDD0F /* Pods-LotteryDraw.debug.xcconfig */,
 				3807059F9F6383452DD22125 /* Pods-LotteryDraw.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -103,7 +108,6 @@
 				20D87A9A2D620E1000900FF0 /* Sources */,
 				20D87A9B2D620E1000900FF0 /* Frameworks */,
 				20D87A9C2D620E1000900FF0 /* Resources */,
-				B46E8683A7603466E6726738 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -182,23 +186,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B46E8683A7603466E6726738 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-LotteryDraw/Pods-LotteryDraw-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-LotteryDraw/Pods-LotteryDraw-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LotteryDraw/Pods-LotteryDraw-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -206,8 +193,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20D87AA42D620E1000900FF0 /* ContentView.swift in Sources */,
 				20D87AA22D620E1000900FF0 /* LotteryDrawApp.swift in Sources */,
+				20D87AB22D620F6C00900FF0 /* LotteryView.swift in Sources */,
+				20D87AB42D620F7400900FF0 /* MutilRandomNumberView.swift in Sources */,
+				20D87AB02D620F5800900FF0 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
