@@ -11,7 +11,6 @@
 		20D87AA62D620E1100900FF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D87AA52D620E1100900FF0 /* Assets.xcassets */; };
 		20D87AA92D620E1100900FF0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D87AA82D620E1100900FF0 /* Preview Assets.xcassets */; };
 		20D87AB02D620F5800900FF0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D87AAF2D620F5800900FF0 /* ContentView.swift */; };
-		20D87AB22D620F6C00900FF0 /* LotteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D87AB12D620F6B00900FF0 /* LotteryView.swift */; };
 		20D87AB42D620F7400900FF0 /* MutilRandomNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D87AB32D620F7400900FF0 /* MutilRandomNumberView.swift */; };
 		20D87AB72D634AA100900FF0 /* LotteryRecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D87AB52D634AA100900FF0 /* LotteryRecordManager.swift */; };
 		20D87AB82D634AA100900FF0 /* LotteryRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D87AB62D634AA100900FF0 /* LotteryRecord.swift */; };
@@ -25,7 +24,6 @@
 		20D87AA52D620E1100900FF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20D87AA82D620E1100900FF0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		20D87AAF2D620F5800900FF0 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		20D87AB12D620F6B00900FF0 /* LotteryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryView.swift; sourceTree = "<group>"; };
 		20D87AB32D620F7400900FF0 /* MutilRandomNumberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutilRandomNumberView.swift; sourceTree = "<group>"; };
 		20D87AB52D634AA100900FF0 /* LotteryRecordManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryRecordManager.swift; sourceTree = "<group>"; };
 		20D87AB62D634AA100900FF0 /* LotteryRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryRecord.swift; sourceTree = "<group>"; };
@@ -70,7 +68,6 @@
 			children = (
 				20D87AA12D620E1000900FF0 /* LotteryDrawApp.swift */,
 				20D87AAF2D620F5800900FF0 /* ContentView.swift */,
-				20D87AB12D620F6B00900FF0 /* LotteryView.swift */,
 				20D87AB92D634B4B00900FF0 /* HistoryView.swift */,
 				20D87AB62D634AA100900FF0 /* LotteryRecord.swift */,
 				20D87AB52D634AA100900FF0 /* LotteryRecordManager.swift */,
@@ -204,7 +201,6 @@
 			files = (
 				20D87ABA2D634B4B00900FF0 /* HistoryView.swift in Sources */,
 				20D87AA22D620E1000900FF0 /* LotteryDrawApp.swift in Sources */,
-				20D87AB22D620F6C00900FF0 /* LotteryView.swift in Sources */,
 				20D87AB42D620F7400900FF0 /* MutilRandomNumberView.swift in Sources */,
 				20D87AB72D634AA100900FF0 /* LotteryRecordManager.swift in Sources */,
 				20D87AB82D634AA100900FF0 /* LotteryRecord.swift in Sources */,
