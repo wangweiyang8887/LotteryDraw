@@ -8,6 +8,14 @@ struct LotteryRecord: Identifiable, Codable {
     let timestamp: Date
     var isFavorite: Bool  // 添加收藏标记
     
+    // 添加一个计算属性来格式化时间
+    var formattedDate: String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "zh_CN")
+        formatter.dateFormat = "MM月dd日 HH:mm:ss"
+        return formatter.string(from: timestamp)
+    }
+    
     init(type: LotteryType, numbers: [Int], isFavorite: Bool = false) {
         self.id = UUID()
         self.type = type

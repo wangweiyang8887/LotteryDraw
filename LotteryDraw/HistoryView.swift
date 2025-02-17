@@ -39,7 +39,7 @@ struct HistoryView: View {
                         }
                         
                         HStack {
-                            Text(record.timestamp.formatted(date: .abbreviated, time: .shortened))
+                            Text(record.formattedDate)
                                 .font(.caption)
                                 .foregroundColor(.gray)
                             

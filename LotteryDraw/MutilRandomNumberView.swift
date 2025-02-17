@@ -60,14 +60,47 @@ enum LotteryType: String, CaseIterable {
 struct MultiRandomNumberView: View {
     @StateObject private var recordManager = LotteryRecordManager()
     @State private var selectedType: LotteryType = .doubleColorBall
-    @State private var numbers: [Int] = []  // 初始化为空数组
     @State private var isAnimating = false
     @State private var timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
     @State private var showHistory = false
     
-    // 添加初始化
-    init() {
-        _numbers = State(initialValue: Array(repeating: 0, count: LotteryType.doubleColorBall.numberCount))
+    // 为每种彩票类型分别存储号码
+    @State private var doubleColorBallNumbers: [Int] = Array(repeating: 0, count: 7)
+    @State private var bigLottoNumbers: [Int] = Array(repeating: 0, count: 7)
+    @State private var lottery3DNumbers: [Int] = Array(repeating: 0, count: 3)
+    @State private var arrangement3Numbers: [Int] = Array(repeating: 0, count: 3)
+    @State private var arrangement5Numbers: [Int] = Array(repeating: 0, count: 5)
+    
+    // 当前选中类型的号码数组
+    var currentNumbers: [Int] {
+        switch selectedType {
+        case .doubleColorBall:
+            return doubleColorBallNumbers
+        case .bigLotto:
+            return bigLottoNumbers
+        case .lottery3D:
+            return lottery3DNumbers
+        case .arrangement3:
+            return arrangement3Numbers
+        case .arrangement5:
+            return arrangement5Numbers
+        }
+    }
+    
+    // 设置当前类型的号码
+    private func setNumbers(_ numbers: [Int]) {
+        switch selectedType {
+        case .doubleColorBall:
+            doubleColorBallNumbers = numbers
+        case .bigLotto:
+            bigLottoNumbers = numbers
+        case .lottery3D:
+            lottery3DNumbers = numbers
+        case .arrangement3:
+            arrangement3Numbers = numbers
+        case .arrangement5:
+            arrangement5Numbers = numbers
+        }
     }
     
     var body: some View {
@@ -87,14 +120,14 @@ struct MultiRandomNumberView: View {
                 .foregroundColor(.gray)
             
             // 数字显示区域
-            HStack(spacing: 12) {
+            HStack(spacing: 8) {
                 Group {
                     switch selectedType {
                     case .doubleColorBall:
                         // 双色球：6个红球
                         ForEach(0..<6, id: \.self) { index in
                             NumberRollView(
-                                finalNumber: numbers.indices.contains(index) ? numbers[index] : 0,
+                                finalNumber: currentNumbers[index],
                                 isAnimating: isAnimating,
                                 timer: timer,
                                 range: 1...33,
@@ -103,22 +136,20 @@ struct MultiRandomNumberView: View {
                             )
                         }
                         // 1个蓝球
-                        if numbers.indices.contains(6) {
-                            NumberRollView(
-                                finalNumber: numbers[6],
-                                isAnimating: isAnimating,
-                                timer: timer,
-                                range: 1...16,
-                                color: .blue,
-                                format: "%02d"
-                            )
-                        }
+                        NumberRollView(
+                            finalNumber: currentNumbers[6],
+                            isAnimating: isAnimating,
+                            timer: timer,
+                            range: 1...16,
+                            color: .blue,
+                            format: "%02d"
+                        )
                         
                     case .bigLotto:
                         // 大乐透：5个前区号码
                         ForEach(0..<5, id: \.self) { index in
                             NumberRollView(
-                                finalNumber: numbers.indices.contains(index) ? numbers[index] : 0,
+                                finalNumber: currentNumbers[index],
                                 isAnimating: isAnimating,
                                 timer: timer,
                                 range: 1...35,
@@ -128,9 +159,9 @@ struct MultiRandomNumberView: View {
                         }
                         // 2个后区号码
                         ForEach(5..<7, id: \.self) { index in
-                            if numbers.indices.contains(index) {
+                            if currentNumbers.indices.contains(index) {
                                 NumberRollView(
-                                    finalNumber: numbers[index],
+                                    finalNumber: currentNumbers[index],
                                     isAnimating: isAnimating,
                                     timer: timer,
                                     range: 1...12,
@@ -144,7 +175,7 @@ struct MultiRandomNumberView: View {
                         // 福彩3D和排列3：3位数
                         ForEach(0..<3, id: \.self) { index in
                             NumberRollView(
-                                finalNumber: numbers.indices.contains(index) ? numbers[index] : 0,
+                                finalNumber: currentNumbers[index],
                                 isAnimating: isAnimating,
                                 timer: timer,
                                 range: 0...9,
@@ -157,7 +188,7 @@ struct MultiRandomNumberView: View {
                         // 排列5：5位数
                         ForEach(0..<5, id: \.self) { index in
                             NumberRollView(
-                                finalNumber: numbers.indices.contains(index) ? numbers[index] : 0,
+                                finalNumber: currentNumbers[index],
                                 isAnimating: isAnimating,
                                 timer: timer,
                                 range: 0...9,
@@ -199,8 +230,8 @@ struct MultiRandomNumberView: View {
             }
         }
         .padding(.vertical)
-        .onChange(of: selectedType) { _,_ in
-            withAnimation {
+        .onChange(of: selectedType) { _, _ in
+            if isAnimating {
                 resetNumbers()
             }
         }
@@ -210,16 +241,14 @@ struct MultiRandomNumberView: View {
         withAnimation {
             isAnimating = false
             timer.upstream.connect().cancel()
-            numbers = Array(repeating: 0, count: selectedType.numberCount)
+            setNumbers(Array(repeating: 0, count: selectedType.numberCount))
         }
     }
     
     private func generateNumbers() {
-        // 重置计时器
         timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
         isAnimating = true
         
-        // 生成新的随机数
         var newNumbers: [Int] = []
         
         switch selectedType {
@@ -274,13 +303,13 @@ struct MultiRandomNumberView: View {
             }
         }
         
-        // 先更新 numbers 数组
-        numbers = Array(repeating: 0, count: selectedType.numberCount)
+        // 先重置当前显示
+        setNumbers(Array(repeating: 0, count: selectedType.numberCount))
         
         // 延迟后停止动画并显示最终数字
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             withAnimation {
-                numbers = newNumbers
+                setNumbers(newNumbers)
                 isAnimating = false
             }
             timer.upstream.connect().cancel()
@@ -299,11 +328,13 @@ struct NumberRollView: View {
     let range: ClosedRange<Int>
     let color: Color
     let format: String
+    var size: CGFloat = 20
+    
     @State private var currentNumber: Int = 0
     
     var body: some View {
         Text(String(format: format, currentNumber))
-            .font(.system(size: 20, weight: .bold, design: .rounded))
+            .font(.system(size: size, weight: .bold, design: .rounded))
             .monospacedDigit()
             .foregroundColor(color)
             .contentTransition(.numericText())
