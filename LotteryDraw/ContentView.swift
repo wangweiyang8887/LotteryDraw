@@ -10,14 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            TabView {
-                LotteryStyle1().tabItem { Label("双色球", systemImage: "1.circle") }
-                LotteryStyle2().tabItem { Label("大乐透", systemImage: "2.circle") }
-                LotteryStyle3().tabItem { Label("排列五", systemImage: "3.circle") }
-                LotteryStyle4().tabItem { Label("历史", systemImage: "clock") }
-                LotteryStyle5().tabItem { Label("奖池", systemImage: "dollarsign.circle") }
-            }
-            .accentColor(.orange)
+            MultiRandomNumberView()
         }
         .padding()
     }
