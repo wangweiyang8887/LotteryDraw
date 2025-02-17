@@ -132,7 +132,7 @@ struct MultiRandomNumberView: View {
                                 timer: timer,
                                 range: 1...33,
                                 color: .red,
-                                format: "%02d"
+                                format: "%d"
                             )
                         }
                         // 1个蓝球
@@ -142,7 +142,7 @@ struct MultiRandomNumberView: View {
                             timer: timer,
                             range: 1...16,
                             color: .blue,
-                            format: "%02d"
+                            format: "%d"
                         )
                         
                     case .bigLotto:
@@ -154,7 +154,7 @@ struct MultiRandomNumberView: View {
                                 timer: timer,
                                 range: 1...35,
                                 color: .red,
-                                format: "%02d"
+                                format: "%d"
                             )
                         }
                         // 2个后区号码
@@ -166,7 +166,7 @@ struct MultiRandomNumberView: View {
                                     timer: timer,
                                     range: 1...12,
                                     color: .blue,
-                                    format: "%02d"
+                                    format: "%d"
                                 )
                             }
                         }
