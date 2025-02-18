@@ -42,3 +42,23 @@ extension LotteryType: Codable {
         try container.encode(rawValue, forKey: .rawValue)
     }
 } 
+
+class LotteryModel : Codable {
+    let lottery_id: String //ssq
+    let lottery_name: String // 彩种 e.双色球
+    let lottery_res: String // 结果 e. "01,02,03,04,05,06,07"
+    let lottery_no: String // 期号 e. "25017"
+    let lottery_date: String // 日期 e. "2025-02-018"
+    let lottery_exdate: String // 兑奖截止日期 e. "2025-04-18"
+    let lottery_sale_amount: String // 销售额
+    let lottery_pool_amount: String // 奖池
+    let lottery_prize: [Price]
+    
+    struct Price : Codable {
+        let prize_name: String // 中奖类型 e. 一等奖
+        let prize_num: String // 中奖数量
+        let prize_amount: String // 中奖金额
+        let prize_require: String // 中奖条件
+    }
+}
+

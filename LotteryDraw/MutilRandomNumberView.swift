@@ -54,6 +54,16 @@ enum LotteryType: String, CaseIterable {
             return .red
         }
     }
+    
+    var lottery_id: String {
+        switch self {
+        case .doubleColorBall: return "ssq"
+        case .bigLotto: return "dlt"
+        case .lottery3D: return "fc3d"
+        case .arrangement3: return "pl3"
+        case .arrangement5: return "pl5"
+        }
+    }
 }
 
 // MARK: - 多数字随机生成视图

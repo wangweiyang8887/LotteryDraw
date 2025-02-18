@@ -48,15 +48,10 @@ struct LotteryResultView: View {
                         }
                         .frame(minHeight: 300)
                     } else {
-                        LazyVStack(spacing: 12) {
-                            ForEach(results) { result in
-                                ResultRow(result: result, type: selectedType)
-                                    .padding(.horizontal)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .fill(Color(UIColor.secondarySystemBackground))
-                                    )
-                                    .padding(.horizontal)
+                        LazyVStack(spacing: 16) {
+                            ForEach(results, id: \.self.result.lottery_id) { result in
+                                ResultRow(result: result.result, type: selectedType)
+                                    .padding(.horizontal, 16)
                             }
                         }
                         .padding(.vertical)
@@ -77,82 +72,45 @@ struct LotteryResultView: View {
         isLoading = true
         errorMessage = nil
         
-        // 模拟网络请求延迟
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            // TODO: 替换为实际的网络请求
-            results = mockResults(for: selectedType)
+        Server.shared.getLottery(with: selectedType.lottery_id) { result in
+            if case .success(let value) = result {
+                results.append(LotteryResult(result: value))
+                errorMessage = nil
+            } else {
+                errorMessage = "暂无数据"
+            }
             isLoading = false
         }
     }
     
     private func refreshResults() async {
-        isLoading = true
-        errorMessage = nil
-        
-        // 模拟网络请求
-        try? await Task.sleep(nanoseconds: 1_000_000_000)
-        results = mockResults(for: selectedType)
-        isLoading = false
-    }
-    
-    // 模拟数据
-    private func mockResults(for type: LotteryType) -> [LotteryResult] {
-        switch type {
-        case .doubleColorBall:
-            return [
-                LotteryResult(id: "2024001", date: "2024-01-02", numbers: [1, 7, 9, 15, 23, 28, 12], prize: "1000万"),
-                LotteryResult(id: "2024002", date: "2024-01-05", numbers: [3, 8, 11, 19, 25, 32, 16], prize: "500万"),
-                LotteryResult(id: "2024003", date: "2024-01-07", numbers: [2, 6, 13, 21, 27, 33, 8], prize: "800万")
-            ]
-        case .bigLotto:
-            return [
-                LotteryResult(id: "24001", date: "2024-01-01", numbers: [5, 11, 17, 23, 31, 2, 9], prize: "1500万"),
-                LotteryResult(id: "24002", date: "2024-01-04", numbers: [7, 13, 19, 25, 33, 4, 11], prize: "700万"),
-                LotteryResult(id: "24003", date: "2024-01-07", numbers: [2, 8, 14, 22, 35, 3, 8], prize: "900万")
-            ]
-        case .lottery3D:
-            return [
-                LotteryResult(id: "24001", date: "2024-01-01", numbers: [3, 5, 7], prize: "1040"),
-                LotteryResult(id: "24002", date: "2024-01-02", numbers: [1, 4, 6], prize: "1040"),
-                LotteryResult(id: "24003", date: "2024-01-03", numbers: [2, 8, 9], prize: "1040")
-            ]
-        case .arrangement3:
-            return [
-                LotteryResult(id: "24001", date: "2024-01-01", numbers: [2, 4, 6], prize: "1040"),
-                LotteryResult(id: "24002", date: "2024-01-02", numbers: [1, 3, 5], prize: "1040"),
-                LotteryResult(id: "24003", date: "2024-01-03", numbers: [7, 8, 9], prize: "1040")
-            ]
-        case .arrangement5:
-            return [
-                LotteryResult(id: "24001", date: "2024-01-01", numbers: [2, 4, 6, 8, 0], prize: "10万"),
-                LotteryResult(id: "24002", date: "2024-01-02", numbers: [1, 3, 5, 7, 9], prize: "10万"),
-                LotteryResult(id: "24003", date: "2024-01-03", numbers: [7, 8, 9, 1, 2], prize: "10万")
-            ]
+        Task {
+            loadResults()
         }
     }
 }
 
 // 单行开奖结果视图
 struct ResultRow: View {
-    let result: LotteryResult
+    let result: LotteryModel
     let type: LotteryType
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             // 期号和日期
             HStack {
-                Text("第\(result.id)期")
+                Text("第\(result.lottery_no)期")
                     .font(.headline)
                 Spacer()
-                Text(result.date)
+                Text(result.lottery_date)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
             
             // 开奖号码
-            HStack(spacing: 8) {
-                ForEach(Array(result.numbers.enumerated()), id: \.offset) { index, number in
-                    NumberBall(number: number, type: type, index: index)
+            HStack(spacing: 6) {
+                ForEach(Array(result.lottery_res.components(separatedBy: ",").enumerated()), id: \.offset) { index, number in
+                    NumberBall(number: Int(number) ?? 0, type: type, index: index)
                 }
             }
             .padding(.vertical, 4)
@@ -161,13 +119,19 @@ struct ResultRow: View {
             HStack {
                 Text("奖池：")
                     .foregroundColor(.secondary)
-                Text(result.prize)
+                Text(result.lottery_pool_amount)
                     .foregroundColor(.red)
                     .bold()
             }
             .font(.subheadline)
         }
-        .padding()
+        .padding(.vertical, 12)
+        .padding(.horizontal, 16)
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color(.systemBackground))
+                .shadow(color: .gray.opacity(0.1), radius: 5, x: 0, y: 2)
+        )
     }
 }
 
@@ -192,22 +156,31 @@ struct NumberBall: View {
     
     var body: some View {
         Text("\(number)")
-            .font(.system(.body, design: .rounded).bold())
+            .font(.system(.body, design: .rounded, weight: .bold))
             .foregroundColor(.white)
-            .frame(width: 32, height: 32)
+            .frame(width: 36, height: 36)
             .background(
                 Circle()
-                    .fill(ballColor)
+                    .fill(ballColor.gradient)
+                    .shadow(color: ballColor.opacity(0.3), radius: 3, x: 0, y: 2)
+            )
+            .overlay(
+                Circle()
+                    .stroke(.white.opacity(0.3), lineWidth: 1)
+            )
+            .overlay(
+                Circle()
+                    .fill(
+                        RadialGradient(
+                            colors: [.white.opacity(0.5), .clear],
+                            center: .topLeading,
+                            startRadius: 0,
+                            endRadius: 20
+                        )
+                    )
+                    .padding(4)
             )
     }
-}
-
-// 开奖结果模型
-struct LotteryResult: Identifiable {
-    let id: String
-    let date: String
-    let numbers: [Int]
-    let prize: String
 }
 
 #Preview {

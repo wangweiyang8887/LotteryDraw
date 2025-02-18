@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2000D0B42D649D6C00B31277 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2000D0B32D649D6C00B31277 /* Server.swift */; };
+		2000D0B62D649EBB00B31277 /* Codable+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2000D0B52D649EBB00B31277 /* Codable+Helper.swift */; };
+		2000D0B82D649EED00B31277 /* KeyedDecodingContainer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2000D0B72D649EED00B31277 /* KeyedDecodingContainer+Extension.swift */; };
+		2000D0BA2D649FDD00B31277 /* LotteryResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2000D0B92D649FDD00B31277 /* LotteryResultView.swift */; };
 		20D87AA22D620E1000900FF0 /* LotteryDrawApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D87AA12D620E1000900FF0 /* LotteryDrawApp.swift */; };
 		20D87AA62D620E1100900FF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D87AA52D620E1100900FF0 /* Assets.xcassets */; };
 		20D87AA92D620E1100900FF0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D87AA82D620E1100900FF0 /* Preview Assets.xcassets */; };
@@ -22,6 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2000D0B32D649D6C00B31277 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		2000D0B52D649EBB00B31277 /* Codable+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable+Helper.swift"; sourceTree = "<group>"; };
+		2000D0B72D649EED00B31277 /* KeyedDecodingContainer+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedDecodingContainer+Extension.swift"; sourceTree = "<group>"; };
+		2000D0B92D649FDD00B31277 /* LotteryResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryResultView.swift; sourceTree = "<group>"; };
 		20D87A9E2D620E1000900FF0 /* LotteryDraw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LotteryDraw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20D87AA12D620E1000900FF0 /* LotteryDrawApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryDrawApp.swift; sourceTree = "<group>"; };
 		20D87AA52D620E1100900FF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,8 +86,12 @@
 				20D87AB92D634B4B00900FF0 /* HistoryView.swift */,
 				20D87AB62D634AA100900FF0 /* LotteryRecord.swift */,
 				20D87AB52D634AA100900FF0 /* LotteryRecordManager.swift */,
+				2000D0B92D649FDD00B31277 /* LotteryResultView.swift */,
 				20D87ABB2D635EDA00900FF0 /* LuckyNumberView.swift */,
 				20D87AB32D620F7400900FF0 /* MutilRandomNumberView.swift */,
+				2000D0B32D649D6C00B31277 /* Server.swift */,
+				2000D0B52D649EBB00B31277 /* Codable+Helper.swift */,
+				2000D0B72D649EED00B31277 /* KeyedDecodingContainer+Extension.swift */,
 				20D87ABF2D638C6800900FF0 /* dice.usdz */,
 				20D87AA52D620E1100900FF0 /* Assets.xcassets */,
 				20D87AA72D620E1100900FF0 /* Preview Content */,
@@ -211,12 +223,16 @@
 			files = (
 				20D87ABA2D634B4B00900FF0 /* HistoryView.swift in Sources */,
 				20D87ABE2D63690400900FF0 /* DiceView.swift in Sources */,
+				2000D0B62D649EBB00B31277 /* Codable+Helper.swift in Sources */,
 				20D87AA22D620E1000900FF0 /* LotteryDrawApp.swift in Sources */,
 				20D87AB42D620F7400900FF0 /* MutilRandomNumberView.swift in Sources */,
 				20D87AB72D634AA100900FF0 /* LotteryRecordManager.swift in Sources */,
 				20D87AB82D634AA100900FF0 /* LotteryRecord.swift in Sources */,
 				20D87ABC2D635EDA00900FF0 /* LuckyNumberView.swift in Sources */,
+				2000D0B82D649EED00B31277 /* KeyedDecodingContainer+Extension.swift in Sources */,
+				2000D0B42D649D6C00B31277 /* Server.swift in Sources */,
 				20D87AB02D620F5800900FF0 /* ContentView.swift in Sources */,
+				2000D0BA2D649FDD00B31277 /* LotteryResultView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
