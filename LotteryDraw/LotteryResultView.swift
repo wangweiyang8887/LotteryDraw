@@ -8,40 +8,62 @@ struct LotteryResultView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 20) {
-                // 玩法选择器
+            VStack(spacing: 0) {
+                // 玩法选择器 - 固定在顶部
                 Picker("彩票类型", selection: $selectedType) {
                     ForEach(LotteryType.allCases, id: \.self) { type in
                         Text(type.rawValue).tag(type)
                     }
                 }
                 .pickerStyle(.segmented)
-                .padding(.horizontal)
+                .padding()
+                .background(Color(UIColor.systemBackground))
                 .onChange(of: selectedType) { _, _ in
                     loadResults()
                 }
                 
-                if isLoading {
-                    ProgressView()
-                        .scaleEffect(1.5)
-                        .padding()
-                } else if let error = errorMessage {
-                    VStack {
-                        Image(systemName: "exclamationmark.triangle")
-                            .font(.largeTitle)
-                            .foregroundColor(.orange)
-                        Text(error)
-                            .foregroundColor(.secondary)
+                // 内容区域 - 可滚动
+                ScrollView {
+                    if isLoading {
+                        VStack {
+                            Spacer(minLength: 100)
+                            ProgressView()
+                                .scaleEffect(1.5)
+                            Text("加载中...")
+                                .foregroundColor(.secondary)
+                                .padding(.top)
+                            Spacer()
+                        }
+                        .frame(minHeight: 300)
+                    } else if let error = errorMessage {
+                        VStack {
+                            Spacer(minLength: 100)
+                            Image(systemName: "exclamationmark.triangle")
+                                .font(.largeTitle)
+                                .foregroundColor(.orange)
+                            Text(error)
+                                .foregroundColor(.secondary)
+                                .padding(.top)
+                            Spacer()
+                        }
+                        .frame(minHeight: 300)
+                    } else {
+                        LazyVStack(spacing: 12) {
+                            ForEach(results) { result in
+                                ResultRow(result: result, type: selectedType)
+                                    .padding(.horizontal)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(Color(UIColor.secondarySystemBackground))
+                                    )
+                                    .padding(.horizontal)
+                            }
+                        }
+                        .padding(.vertical)
                     }
-                    .padding()
-                } else {
-                    // 开奖结果列表
-                    List(results) { result in
-                        ResultRow(result: result, type: selectedType)
-                    }
-                    .refreshable {
-                        await refreshResults()
-                    }
+                }
+                .refreshable {
+                    await refreshResults()
                 }
             }
             .navigationTitle("开奖结果")
@@ -116,7 +138,7 @@ struct ResultRow: View {
     let type: LotteryType
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 12) {
             // 期号和日期
             HStack {
                 Text("第\(result.id)期")
@@ -133,6 +155,7 @@ struct ResultRow: View {
                     NumberBall(number: number, type: type, index: index)
                 }
             }
+            .padding(.vertical, 4)
             
             // 奖池信息
             HStack {
@@ -140,10 +163,11 @@ struct ResultRow: View {
                     .foregroundColor(.secondary)
                 Text(result.prize)
                     .foregroundColor(.red)
+                    .bold()
             }
             .font(.subheadline)
         }
-        .padding(.vertical, 8)
+        .padding()
     }
 }
 
