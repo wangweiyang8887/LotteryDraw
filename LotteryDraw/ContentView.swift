@@ -27,6 +27,15 @@ struct ContentView: View {
             .tabItem {
                 Label("幸运数字", systemImage: "star.fill")
             }
+            
+            NavigationView {
+                DiceView()
+                    .navigationTitle("摇骰子")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            .tabItem {
+                Label("摇骰子", systemImage: "dice.fill")
+            }
         }
     }
 }

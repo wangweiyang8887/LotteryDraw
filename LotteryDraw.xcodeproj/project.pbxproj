@@ -16,6 +16,8 @@
 		20D87AB82D634AA100900FF0 /* LotteryRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D87AB62D634AA100900FF0 /* LotteryRecord.swift */; };
 		20D87ABA2D634B4B00900FF0 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D87AB92D634B4B00900FF0 /* HistoryView.swift */; };
 		20D87ABC2D635EDA00900FF0 /* LuckyNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D87ABB2D635EDA00900FF0 /* LuckyNumberView.swift */; };
+		20D87ABE2D63690400900FF0 /* DiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D87ABD2D63690300900FF0 /* DiceView.swift */; };
+		20D87AC02D638C6800900FF0 /* dice.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 20D87ABF2D638C6800900FF0 /* dice.usdz */; };
 		356063B34201A7A30A6434F8 /* Pods_LotteryDraw.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0CA76664EB4500AEDFF08B /* Pods_LotteryDraw.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +32,8 @@
 		20D87AB62D634AA100900FF0 /* LotteryRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryRecord.swift; sourceTree = "<group>"; };
 		20D87AB92D634B4B00900FF0 /* HistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		20D87ABB2D635EDA00900FF0 /* LuckyNumberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckyNumberView.swift; sourceTree = "<group>"; };
+		20D87ABD2D63690300900FF0 /* DiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceView.swift; sourceTree = "<group>"; };
+		20D87ABF2D638C6800900FF0 /* dice.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = dice.usdz; sourceTree = "<group>"; };
 		3807059F9F6383452DD22125 /* Pods-LotteryDraw.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LotteryDraw.release.xcconfig"; path = "Target Support Files/Pods-LotteryDraw/Pods-LotteryDraw.release.xcconfig"; sourceTree = "<group>"; };
 		C74E7077541C731FB54BDD0F /* Pods-LotteryDraw.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LotteryDraw.debug.xcconfig"; path = "Target Support Files/Pods-LotteryDraw/Pods-LotteryDraw.debug.xcconfig"; sourceTree = "<group>"; };
 		DE0CA76664EB4500AEDFF08B /* Pods_LotteryDraw.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LotteryDraw.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,11 +74,13 @@
 			children = (
 				20D87AA12D620E1000900FF0 /* LotteryDrawApp.swift */,
 				20D87AAF2D620F5800900FF0 /* ContentView.swift */,
+				20D87ABD2D63690300900FF0 /* DiceView.swift */,
 				20D87AB92D634B4B00900FF0 /* HistoryView.swift */,
 				20D87AB62D634AA100900FF0 /* LotteryRecord.swift */,
 				20D87AB52D634AA100900FF0 /* LotteryRecordManager.swift */,
 				20D87ABB2D635EDA00900FF0 /* LuckyNumberView.swift */,
 				20D87AB32D620F7400900FF0 /* MutilRandomNumberView.swift */,
+				20D87ABF2D638C6800900FF0 /* dice.usdz */,
 				20D87AA52D620E1100900FF0 /* Assets.xcassets */,
 				20D87AA72D620E1100900FF0 /* Preview Content */,
 			);
@@ -166,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20D87AA92D620E1100900FF0 /* Preview Assets.xcassets in Resources */,
+				20D87AC02D638C6800900FF0 /* dice.usdz in Resources */,
 				20D87AA62D620E1100900FF0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -203,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20D87ABA2D634B4B00900FF0 /* HistoryView.swift in Sources */,
+				20D87ABE2D63690400900FF0 /* DiceView.swift in Sources */,
 				20D87AA22D620E1000900FF0 /* LotteryDrawApp.swift in Sources */,
 				20D87AB42D620F7400900FF0 /* MutilRandomNumberView.swift in Sources */,
 				20D87AB72D634AA100900FF0 /* LotteryRecordManager.swift in Sources */,
