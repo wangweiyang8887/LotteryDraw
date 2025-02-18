@@ -57,6 +57,7 @@ enum LotteryType: String, CaseIterable {
 }
 
 // MARK: - 多数字随机生成视图
+
 struct MultiRandomNumberView: View {
     @StateObject private var recordManager = LotteryRecordManager()
     @State private var selectedType: LotteryType = .doubleColorBall

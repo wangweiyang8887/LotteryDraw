@@ -10,32 +10,29 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            NavigationView {
-                MultiRandomNumberView()
-                    .navigationTitle("彩票摇号")
-                    .navigationBarTitleDisplayMode(.inline)
-            }
-            .tabItem {
-                Label("彩票摇号", systemImage: "ticket.fill")
-            }
+            // 开奖结果页面
+            LotteryResultView()
+                .tabItem {
+                    Label("开奖", systemImage: "list.bullet")
+                }
             
-            NavigationView {
-                LuckyNumberView()
-                    .navigationTitle("幸运数字")
-                    .navigationBarTitleDisplayMode(.inline)
-            }
-            .tabItem {
-                Label("幸运数字", systemImage: "star.fill")
-            }
+            // 摇号页面
+            MultiRandomNumberView()
+                .tabItem {
+                    Label("摇号", systemImage: "number")
+                }
             
-            NavigationView {
-                DiceView()
-                    .navigationTitle("摇骰子")
-                    .navigationBarTitleDisplayMode(.inline)
-            }
-            .tabItem {
-                Label("摇骰子", systemImage: "dice.fill")
-            }
+            // 幸运数字页面
+            LuckyNumberView()
+                .tabItem {
+                    Label("幸运数", systemImage: "star")
+                }
+            
+            // 骰子页面
+            DiceView()
+                .tabItem {
+                    Label("骰子", systemImage: "dice")
+                }
         }
     }
 }
