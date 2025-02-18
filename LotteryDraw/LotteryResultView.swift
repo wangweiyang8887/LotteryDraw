@@ -6,6 +6,9 @@ struct LotteryResultView: View {
     @State private var isLoading = false
     @State private var errorMessage: String?
     
+    // 本地存储相关的键
+    private let storageKey = "lottery_results_cache"
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
@@ -16,8 +19,13 @@ struct LotteryResultView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                .padding()
-                .background(Color(UIColor.systemBackground))
+                .padding(.horizontal)
+                .padding(.vertical, 12)
+                .background(
+                    Rectangle()
+                        .fill(Color(.systemBackground))
+                        .shadow(color: .gray.opacity(0.1), radius: 3, y: 2)
+                )
                 .onChange(of: selectedType) { _, _ in
                     loadResults()
                 }
@@ -36,14 +44,15 @@ struct LotteryResultView: View {
                         }
                         .frame(minHeight: 300)
                     } else if let error = errorMessage {
-                        VStack {
+                        VStack(spacing: 16) {
                             Spacer(minLength: 100)
                             Image(systemName: "exclamationmark.triangle")
-                                .font(.largeTitle)
-                                .foregroundColor(.orange)
+                                .font(.system(size: 40))
+                                .foregroundColor(.secondary)
+                            
                             Text(error)
                                 .foregroundColor(.secondary)
-                                .padding(.top)
+                            
                             Spacer()
                         }
                         .frame(minHeight: 300)
@@ -60,6 +69,8 @@ struct LotteryResultView: View {
                 .refreshable {
                     await refreshResults()
                 }
+                .frame(width: UIScreen.main.bounds.width)
+                .background(Color.clear)
             }
             .navigationTitle("开奖结果")
         }
@@ -68,13 +79,45 @@ struct LotteryResultView: View {
         }
     }
     
+    // 从本地存储加载数据
+    private func loadFromStorage(for type: LotteryType) -> [LotteryResult]? {
+        if let data = UserDefaults.standard.data(forKey: "\(storageKey)_\(type.rawValue)"),
+           let decodedResults = try? JSONDecoder().decode([LotteryResult].self, from: data) {
+            return decodedResults
+        }
+        return nil
+    }
+    
+    // 保存数据到本地存储
+    private func saveToStorage(results: [LotteryResult], for type: LotteryType) {
+        if let encoded = try? JSONEncoder().encode(results) {
+            UserDefaults.standard.set(encoded, forKey: "\(storageKey)_\(type.rawValue)")
+        }
+    }
+    
     private func loadResults() {
         isLoading = true
         errorMessage = nil
         
+        // 先尝试从本地加载
+        if let storedResults = loadFromStorage(for: selectedType) {
+            results = storedResults
+            isLoading = false
+            return
+        }
+        
+        // 如果本地没有数据，则从网络加载
         Server.shared.getLottery(with: selectedType.lottery_id) { result in
             if case .success(let value) = result {
-                results.append(LotteryResult(result: value))
+                let newResult = LotteryResult(result: value)
+                
+                // 检查是否存在相同期号
+                if !results.contains(where: { $0.result.lottery_no == newResult.result.lottery_no }) {
+                    // 将新数据添加到数组开头
+                    results.insert(newResult, at: 0)
+                    // 保存到本地存储
+                    saveToStorage(results: results, for: selectedType)
+                }
                 errorMessage = nil
             } else {
                 errorMessage = "暂无数据"
@@ -84,9 +127,11 @@ struct LotteryResultView: View {
     }
     
     private func refreshResults() async {
-        Task {
-            loadResults()
-        }
+        // 刷新时清除本地存储
+//        UserDefaults.standard.removeObject(forKey: "\(storageKey)_\(selectedType.rawValue)")
+//        Task {
+//            loadResults()
+//        }
     }
 }
 
@@ -97,7 +142,6 @@ struct ResultRow: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            // 期号和日期
             HStack {
                 Text("第\(result.lottery_no)期")
                     .font(.headline)
@@ -107,15 +151,12 @@ struct ResultRow: View {
                     .foregroundColor(.secondary)
             }
             
-            // 开奖号码
-            HStack(spacing: 6) {
+            HStack(spacing: 8) {
                 ForEach(Array(result.lottery_res.components(separatedBy: ",").enumerated()), id: \.offset) { index, number in
                     NumberBall(number: Int(number) ?? 0, type: type, index: index)
                 }
             }
-            .padding(.vertical, 4)
             
-            // 奖池信息
             HStack {
                 Text("奖池：")
                     .foregroundColor(.secondary)
@@ -125,13 +166,9 @@ struct ResultRow: View {
             }
             .font(.subheadline)
         }
-        .padding(.vertical, 12)
-        .padding(.horizontal, 16)
-        .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Color(.systemBackground))
-                .shadow(color: .gray.opacity(0.1), radius: 5, x: 0, y: 2)
-        )
+        .padding()
+        .background(Color(.secondarySystemGroupedBackground))
+        .cornerRadius(12)
     }
 }
 
@@ -155,33 +192,41 @@ struct NumberBall: View {
     }
     
     var body: some View {
-        Text("\(number)")
+        Text(String(format: "%02d", number))
             .font(.system(.body, design: .rounded, weight: .bold))
             .foregroundColor(.white)
-            .frame(width: 36, height: 36)
+            .frame(width: 32, height: 32)
             .background(
                 Circle()
-                    .fill(ballColor.gradient)
-                    .shadow(color: ballColor.opacity(0.3), radius: 3, x: 0, y: 2)
-            )
-            .overlay(
-                Circle()
-                    .stroke(.white.opacity(0.3), lineWidth: 1)
-            )
-            .overlay(
-                Circle()
-                    .fill(
-                        RadialGradient(
-                            colors: [.white.opacity(0.5), .clear],
-                            center: .topLeading,
-                            startRadius: 0,
-                            endRadius: 20
-                        )
-                    )
-                    .padding(4)
+                    .fill(ballColor)
             )
     }
 }
+
+// 为了确保正确比较，让 LotteryResult 符合 Equatable
+extension LotteryResult: Equatable {
+    static func == (lhs: LotteryResult, rhs: LotteryResult) -> Bool {
+        return lhs.result.lottery_no == rhs.result.lottery_no
+    }
+}
+
+// 确保 LotteryResult 可以被编码和解码
+extension LotteryResult {
+    enum CodingKeys: String, CodingKey {
+        case result
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        result = try container.decode(LotteryModel.self, forKey: .result)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(result, forKey: .result)
+    }
+}
+
 
 #Preview {
     LotteryResultView()
