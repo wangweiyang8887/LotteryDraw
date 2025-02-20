@@ -143,63 +143,26 @@ struct ResultRow: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Text("第\(result.lottery_no)期")
-                    .font(.headline)
+                
+                Text("\(result.lottery_name) 第\(result.lottery_no)期")
+                    .font(.caption)
                 Spacer()
                 Text(result.lottery_date)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
             
-            HStack(spacing: 8) {
+            HStack(spacing: 6) {
                 ForEach(Array(result.lottery_res.components(separatedBy: ",").enumerated()), id: \.offset) { index, number in
                     NumberBall(number: Int(number) ?? 0, type: type, index: index)
                 }
             }
-            
-            HStack {
-                Text("奖池：")
-                    .foregroundColor(.secondary)
-                Text(result.lottery_pool_amount)
-                    .foregroundColor(.red)
-                    .bold()
-            }
-            .font(.subheadline)
+            .padding(.vertical, 4)
         }
-        .padding()
+        .padding(.vertical, 12)
+        .padding(.horizontal, 16)
         .background(Color(.secondarySystemGroupedBackground))
         .cornerRadius(12)
-    }
-}
-
-// 号码球视图
-struct NumberBall: View {
-    let number: Int
-    let type: LotteryType
-    let index: Int
-    
-    var ballColor: Color {
-        switch type {
-        case .doubleColorBall:
-            return index == 6 ? .blue : .red
-        case .bigLotto:
-            return index >= 5 ? .blue : .red
-        case .lottery3D, .arrangement3:
-            return .blue
-        case .arrangement5:
-            return .green
-        }
-    }
-    
-    var body: some View {
-        Text(String(format: "%02d", number))
-            .font(.system(.body, design: .rounded, weight: .bold))
-            .foregroundColor(.white)
-            .frame(width: 32, height: 32)
-            .background(
-                Circle()
-                    .fill(ballColor)
-            )
     }
 }
 

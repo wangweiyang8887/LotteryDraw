@@ -11,6 +11,22 @@
 		2000D0B62D649EBB00B31277 /* Codable+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2000D0B52D649EBB00B31277 /* Codable+Helper.swift */; };
 		2000D0B82D649EED00B31277 /* KeyedDecodingContainer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2000D0B72D649EED00B31277 /* KeyedDecodingContainer+Extension.swift */; };
 		2000D0BA2D649FDD00B31277 /* LotteryResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2000D0B92D649FDD00B31277 /* LotteryResultView.swift */; };
+		2000D0BC2D66B1A300B31277 /* SharedLotteryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2000D0BB2D66B1A300B31277 /* SharedLotteryData.swift */; };
+		2000D0BF2D66B28A00B31277 /* GenerateNumbersIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2000D0BE2D66B28A00B31277 /* GenerateNumbersIntent.swift */; };
+		2000D0C82D66B2B200B31277 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2000D0C72D66B2B200B31277 /* WidgetKit.framework */; };
+		2000D0CA2D66B2B200B31277 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2000D0C92D66B2B200B31277 /* SwiftUI.framework */; };
+		2000D0CD2D66B2B200B31277 /* LotteryWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2000D0CC2D66B2B200B31277 /* LotteryWidgetBundle.swift */; };
+		2000D0CF2D66B2B200B31277 /* LotteryWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2000D0CE2D66B2B200B31277 /* LotteryWidgetLiveActivity.swift */; };
+		2000D0D12D66B2B200B31277 /* LotteryWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2000D0D02D66B2B200B31277 /* LotteryWidget.swift */; };
+		2000D0D32D66B2B200B31277 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2000D0D22D66B2B200B31277 /* AppIntent.swift */; };
+		2000D0D52D66B2B300B31277 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2000D0D42D66B2B300B31277 /* Assets.xcassets */; };
+		2000D0D92D66B2B300B31277 /* LotteryWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2000D0C62D66B2B200B31277 /* LotteryWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2000D0DF2D66B3B000B31277 /* SharedLotteryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2000D0BB2D66B1A300B31277 /* SharedLotteryData.swift */; };
+		2000D0E02D66B3C000B31277 /* GenerateNumbersIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2000D0BE2D66B28A00B31277 /* GenerateNumbersIntent.swift */; };
+		2000D0E12D66B3F200B31277 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D87AB92D634B4B00900FF0 /* HistoryView.swift */; };
+		2000D0E22D66B40400B31277 /* MutilRandomNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D87AB32D620F7400900FF0 /* MutilRandomNumberView.swift */; };
+		2000D0E32D66B43700B31277 /* LotteryRecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D87AB52D634AA100900FF0 /* LotteryRecordManager.swift */; };
+		2000D0E42D66B44700B31277 /* LotteryRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D87AB62D634AA100900FF0 /* LotteryRecord.swift */; };
 		20D87AA22D620E1000900FF0 /* LotteryDrawApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D87AA12D620E1000900FF0 /* LotteryDrawApp.swift */; };
 		20D87AA62D620E1100900FF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D87AA52D620E1100900FF0 /* Assets.xcassets */; };
 		20D87AA92D620E1100900FF0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D87AA82D620E1100900FF0 /* Preview Assets.xcassets */; };
@@ -25,11 +41,48 @@
 		356063B34201A7A30A6434F8 /* Pods_LotteryDraw.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0CA76664EB4500AEDFF08B /* Pods_LotteryDraw.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2000D0D72D66B2B300B31277 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20D87A962D620E0F00900FF0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2000D0C52D66B2B200B31277;
+			remoteInfo = LotteryWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2000D0DD2D66B2B300B31277 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2000D0D92D66B2B300B31277 /* LotteryWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2000D0B32D649D6C00B31277 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		2000D0B52D649EBB00B31277 /* Codable+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable+Helper.swift"; sourceTree = "<group>"; };
 		2000D0B72D649EED00B31277 /* KeyedDecodingContainer+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedDecodingContainer+Extension.swift"; sourceTree = "<group>"; };
 		2000D0B92D649FDD00B31277 /* LotteryResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryResultView.swift; sourceTree = "<group>"; };
+		2000D0BB2D66B1A300B31277 /* SharedLotteryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedLotteryData.swift; sourceTree = "<group>"; };
+		2000D0BD2D66B1F900B31277 /* LotteryDraw.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LotteryDraw.entitlements; sourceTree = "<group>"; };
+		2000D0BE2D66B28A00B31277 /* GenerateNumbersIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateNumbersIntent.swift; sourceTree = "<group>"; };
+		2000D0C62D66B2B200B31277 /* LotteryWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LotteryWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2000D0C72D66B2B200B31277 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		2000D0C92D66B2B200B31277 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		2000D0CC2D66B2B200B31277 /* LotteryWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryWidgetBundle.swift; sourceTree = "<group>"; };
+		2000D0CE2D66B2B200B31277 /* LotteryWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		2000D0D02D66B2B200B31277 /* LotteryWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryWidget.swift; sourceTree = "<group>"; };
+		2000D0D22D66B2B200B31277 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		2000D0D42D66B2B300B31277 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2000D0D62D66B2B300B31277 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2000D0DE2D66B2BE00B31277 /* LotteryWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LotteryWidgetExtension.entitlements; sourceTree = "<group>"; };
 		20D87A9E2D620E1000900FF0 /* LotteryDraw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LotteryDraw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20D87AA12D620E1000900FF0 /* LotteryDrawApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryDrawApp.swift; sourceTree = "<group>"; };
 		20D87AA52D620E1100900FF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,6 +101,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2000D0C32D66B2B200B31277 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2000D0CA2D66B2B200B31277 /* SwiftUI.framework in Frameworks */,
+				2000D0C82D66B2B200B31277 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		20D87A9B2D620E1000900FF0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -59,10 +121,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2000D0CB2D66B2B200B31277 /* LotteryWidget */ = {
+			isa = PBXGroup;
+			children = (
+				2000D0CC2D66B2B200B31277 /* LotteryWidgetBundle.swift */,
+				2000D0CE2D66B2B200B31277 /* LotteryWidgetLiveActivity.swift */,
+				2000D0D02D66B2B200B31277 /* LotteryWidget.swift */,
+				2000D0D22D66B2B200B31277 /* AppIntent.swift */,
+				2000D0D42D66B2B300B31277 /* Assets.xcassets */,
+				2000D0D62D66B2B300B31277 /* Info.plist */,
+			);
+			path = LotteryWidget;
+			sourceTree = "<group>";
+		};
 		20D87A952D620E0F00900FF0 = {
 			isa = PBXGroup;
 			children = (
+				2000D0DE2D66B2BE00B31277 /* LotteryWidgetExtension.entitlements */,
 				20D87AA02D620E1000900FF0 /* LotteryDraw */,
+				2000D0CB2D66B2B200B31277 /* LotteryWidget */,
 				20D87A9F2D620E1000900FF0 /* Products */,
 				B83685F5E0CB93069047D5D1 /* Pods */,
 				9914008CB5222C082982ACEF /* Frameworks */,
@@ -73,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				20D87A9E2D620E1000900FF0 /* LotteryDraw.app */,
+				2000D0C62D66B2B200B31277 /* LotteryWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -80,6 +158,7 @@
 		20D87AA02D620E1000900FF0 /* LotteryDraw */ = {
 			isa = PBXGroup;
 			children = (
+				2000D0BD2D66B1F900B31277 /* LotteryDraw.entitlements */,
 				20D87AA12D620E1000900FF0 /* LotteryDrawApp.swift */,
 				20D87AAF2D620F5800900FF0 /* ContentView.swift */,
 				20D87ABD2D63690300900FF0 /* DiceView.swift */,
@@ -92,6 +171,8 @@
 				2000D0B32D649D6C00B31277 /* Server.swift */,
 				2000D0B52D649EBB00B31277 /* Codable+Helper.swift */,
 				2000D0B72D649EED00B31277 /* KeyedDecodingContainer+Extension.swift */,
+				2000D0BB2D66B1A300B31277 /* SharedLotteryData.swift */,
+				2000D0BE2D66B28A00B31277 /* GenerateNumbersIntent.swift */,
 				20D87ABF2D638C6800900FF0 /* dice.usdz */,
 				20D87AA52D620E1100900FF0 /* Assets.xcassets */,
 				20D87AA72D620E1100900FF0 /* Preview Content */,
@@ -111,6 +192,8 @@
 			isa = PBXGroup;
 			children = (
 				DE0CA76664EB4500AEDFF08B /* Pods_LotteryDraw.framework */,
+				2000D0C72D66B2B200B31277 /* WidgetKit.framework */,
+				2000D0C92D66B2B200B31277 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -127,6 +210,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2000D0C52D66B2B200B31277 /* LotteryWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2000D0DA2D66B2B300B31277 /* Build configuration list for PBXNativeTarget "LotteryWidgetExtension" */;
+			buildPhases = (
+				2000D0C22D66B2B200B31277 /* Sources */,
+				2000D0C32D66B2B200B31277 /* Frameworks */,
+				2000D0C42D66B2B200B31277 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LotteryWidgetExtension;
+			productName = LotteryWidgetExtension;
+			productReference = 2000D0C62D66B2B200B31277 /* LotteryWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		20D87A9D2D620E1000900FF0 /* LotteryDraw */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 20D87AAC2D620E1100900FF0 /* Build configuration list for PBXNativeTarget "LotteryDraw" */;
@@ -135,10 +235,12 @@
 				20D87A9A2D620E1000900FF0 /* Sources */,
 				20D87A9B2D620E1000900FF0 /* Frameworks */,
 				20D87A9C2D620E1000900FF0 /* Resources */,
+				2000D0DD2D66B2B300B31277 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2000D0D82D66B2B300B31277 /* PBXTargetDependency */,
 			);
 			name = LotteryDraw;
 			productName = LotteryDraw;
@@ -155,6 +257,9 @@
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
+					2000D0C52D66B2B200B31277 = {
+						CreatedOnToolsVersion = 15.4;
+					};
 					20D87A9D2D620E1000900FF0 = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -174,11 +279,20 @@
 			projectRoot = "";
 			targets = (
 				20D87A9D2D620E1000900FF0 /* LotteryDraw */,
+				2000D0C52D66B2B200B31277 /* LotteryWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2000D0C42D66B2B200B31277 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2000D0D52D66B2B300B31277 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		20D87A9C2D620E1000900FF0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -217,6 +331,23 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2000D0C22D66B2B200B31277 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2000D0E12D66B3F200B31277 /* HistoryView.swift in Sources */,
+				2000D0CF2D66B2B200B31277 /* LotteryWidgetLiveActivity.swift in Sources */,
+				2000D0D32D66B2B200B31277 /* AppIntent.swift in Sources */,
+				2000D0DF2D66B3B000B31277 /* SharedLotteryData.swift in Sources */,
+				2000D0E32D66B43700B31277 /* LotteryRecordManager.swift in Sources */,
+				2000D0D12D66B2B200B31277 /* LotteryWidget.swift in Sources */,
+				2000D0E42D66B44700B31277 /* LotteryRecord.swift in Sources */,
+				2000D0CD2D66B2B200B31277 /* LotteryWidgetBundle.swift in Sources */,
+				2000D0E22D66B40400B31277 /* MutilRandomNumberView.swift in Sources */,
+				2000D0E02D66B3C000B31277 /* GenerateNumbersIntent.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		20D87A9A2D620E1000900FF0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -226,7 +357,9 @@
 				2000D0B62D649EBB00B31277 /* Codable+Helper.swift in Sources */,
 				20D87AA22D620E1000900FF0 /* LotteryDrawApp.swift in Sources */,
 				20D87AB42D620F7400900FF0 /* MutilRandomNumberView.swift in Sources */,
+				2000D0BF2D66B28A00B31277 /* GenerateNumbersIntent.swift in Sources */,
 				20D87AB72D634AA100900FF0 /* LotteryRecordManager.swift in Sources */,
+				2000D0BC2D66B1A300B31277 /* SharedLotteryData.swift in Sources */,
 				20D87AB82D634AA100900FF0 /* LotteryRecord.swift in Sources */,
 				20D87ABC2D635EDA00900FF0 /* LuckyNumberView.swift in Sources */,
 				2000D0B82D649EED00B31277 /* KeyedDecodingContainer+Extension.swift in Sources */,
@@ -238,7 +371,71 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2000D0D82D66B2B300B31277 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2000D0C52D66B2B200B31277 /* LotteryWidgetExtension */;
+			targetProxy = 2000D0D72D66B2B300B31277 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		2000D0DB2D66B2B300B31277 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = LotteryWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EVG8QY6QFT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LotteryWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LotteryWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = evan.com.LotteryDraw.LotteryWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2000D0DC2D66B2B300B31277 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = LotteryWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EVG8QY6QFT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LotteryWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LotteryWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = evan.com.LotteryDraw.LotteryWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		20D87AAA2D620E1100900FF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -362,8 +559,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C74E7077541C731FB54BDD0F /* Pods-LotteryDraw.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LotteryDraw/LotteryDraw.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LotteryDraw/Preview Content\"";
@@ -392,8 +591,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3807059F9F6383452DD22125 /* Pods-LotteryDraw.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LotteryDraw/LotteryDraw.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LotteryDraw/Preview Content\"";
@@ -421,6 +622,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2000D0DA2D66B2B300B31277 /* Build configuration list for PBXNativeTarget "LotteryWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2000D0DB2D66B2B300B31277 /* Debug */,
+				2000D0DC2D66B2B300B31277 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		20D87A992D620E0F00900FF0 /* Build configuration list for PBXProject "LotteryDraw" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

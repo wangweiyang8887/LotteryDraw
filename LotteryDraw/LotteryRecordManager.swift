@@ -1,4 +1,5 @@
 import Foundation
+import WidgetKit
 
 class LotteryRecordManager: ObservableObject {
     @Published private(set) var records: [LotteryRecord] = []
@@ -14,6 +15,10 @@ class LotteryRecordManager: ObservableObject {
         
         records.insert(record, at: 0) // 新记录插入到最前面
         saveRecords()
+        
+        // 更新 Widget 显示
+        SharedLotteryData.saveLatestNumbers(record.numbers, type: record.type)
+        WidgetCenter.shared.reloadTimelines(ofKind: SharedLotteryData.widgetKind)
     }
     
     private func isValidRecord(_ record: LotteryRecord) -> Bool {
