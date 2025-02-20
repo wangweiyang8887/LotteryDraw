@@ -12,6 +12,5 @@ import SwiftUI
 struct LotteryWidgetBundle: WidgetBundle {
     var body: some Widget {
         LotteryWidget()
-//        LotteryWidgetLiveActivity()
     }
 }
